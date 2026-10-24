@@ -1,0 +1,12 @@
+[Unit]
+Description=Automated Backup Recovery Drill
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/sunraku/Projects/restore-drill
+# Define your environment variables here
+Environment="RESTIC_PASSWORD=testpass123"
+Environment="DISCORD_WEBHOOK="
+# Execute using the virtual environment's python
+ExecStart=/home/sunraku/Projects/restore-drill/venv/bin/python -m cli.main run

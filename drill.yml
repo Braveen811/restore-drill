@@ -1,0 +1,22 @@
+backup:
+  tool: restic
+  repository: test_repo
+  password_env: RESTIC_PASSWORD
+
+restore:
+  destination: /tmp/restore-drill-sandbox
+  snapshot: latest
+
+checks:
+  critical_paths:
+    - mock_data/etc/app.conf
+    - mock_data/data/shopkart.db
+    - mock_data/data/asset.bin
+  sqlite_smoke_test:
+    enabled: true
+    path: mock_data/data/shopkart.db
+    table: users
+
+scoring:
+  max_restore_seconds: 60
+  max_snapshot_age_hours: 24

@@ -1,0 +1,8 @@
+venv/
+drills.duckdb
+test_repo/
+mock_data/
+/tmp/
+.DS_Store
+__pycache__/
+*.pyc
