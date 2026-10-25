@@ -15,6 +15,97 @@
 
 ---
 
+## 💻 Development Environment
+
+This project was natively developed and tested in the following environment:
+- **Operating System:** Arch Linux (Wayland / Hyprland)
+- **Terminal Environment:** `sunraku` (ZSH)
+- **Core Languages/Tools:** Python 3.10+ (Typer, Rich), Restic, DuckDB, SQLite
+- **Automation:** Systemd User Timers
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+- **Python 3.10+**
+- **Restic** (Ensure `restic` is installed on your host system: `sudo pacman -S restic`)
+- **Git**
+
+### Step-by-Step Setup
+1. **Clone the repository:**
+```bash
+git clone [https://github.com/braveen-r/restore-drill.git](https://github.com/braveen-r/restore-drill.git)
+cd restore-drill
+
+```
+
+2. **Create and activate a virtual environment:**
+```bash
+python -m venv venv
+source venv/bin/activate
+
+```
+
+
+3. **Install dependencies:**
+```bash
+pip install -r requirements.txt
+# OR if packaged as a CLI: pip install -e .
+
+```
+
+
+
+---
+
+## 🎮 How to Run (Usage)
+
+### 1. Configuration
+
+Copy the example configuration file and define your SLA targets and critical paths:
+
+```bash
+cp drill.example.yml drill.yml
+
+```
+
+### 2. Export Environment Variables
+
+For the script to access your backups and Discord channel, export your credentials:
+
+```bash
+export RESTIC_REPOSITORY="/path/to/your/repo"
+export RESTIC_PASSWORD="your-secure-password"
+export DISCORD_WEBHOOK="[https://discord.com/api/webhooks/](https://discord.com/api/webhooks/)..."
+
+```
+
+### 3. Run a Manual Drill
+
+Trigger a disaster recovery simulation manually from your terminal:
+
+```bash
+python -m cli.main run
+
+```
+
+*The rich TUI will display the extraction progress, SLA grading, and database integrity checks in real-time.*
+
+### 4. Automate with Systemd (Optional)
+
+To run Restore-Drill automatically in the background (e.g., every Sunday at 2 AM):
+
+```bash
+mkdir -p ~/.config/systemd/user/
+cp systemd/* ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now restore-drill.timer
+
+```
+
+---
+
 ## 🏗️ System Architecture
 
 ```text
@@ -99,6 +190,6 @@ restore-drill/
 
 ## ✌️ Wrapping Up
 
-You now have a fully functional, production-ready, zero-cost disaster recovery telemetry engine. Break your database, watch your systemd timer fire up, and see your live incident runbook instantly reflect in your Discord channel! 🚀 
+You now have a fully functional, production-ready, zero-cost disaster recovery telemetry engine. Break your database, watch your systemd timer fire up, and see your live incident runbook instantly reflect in your Discord channel! 🚀
 
 See you in the terminal!
