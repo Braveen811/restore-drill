@@ -20,3 +20,7 @@ checks:
 scoring:
   max_restore_seconds: 60
   max_snapshot_age_hours: 24
+
+notifications:
+  discord_webhook_env: DISCORD_WEBHOOK
+  alert_on: ["A", "B", "C", "D", "F"]

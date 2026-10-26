@@ -1,8 +1,20 @@
+# Python Environments
 venv/
-drills.duckdb
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Project Specific Data & Mock Repos
 test_repo/
 mock_data/
-/tmp/
+sandbox/
+drills.duckdb*
+
+# OS Generated
 .DS_Store
-__pycache__/
-*.pyc
+Thumbs.db
+
+# Secrets & Local Configs
+.env
+drill.yml
